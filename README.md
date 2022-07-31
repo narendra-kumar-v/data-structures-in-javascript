@@ -1,2 +1,3 @@
-# Data Structures in JavaScript
-Implementation of Data Structures in JavaScript
+# Data Structures & Algorithms in JavaScript
+
+My practice repo for DSA problem solving in JavaScript.
