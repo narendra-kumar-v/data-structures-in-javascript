@@ -1,16 +1,24 @@
-const arr2 = [2, 3];
+const arr2 = [2, 3]; // 2
 const arr1 = [1, 2];
-const arr3 = ["a", "b"];
+
+const arr3 = ["a", "b"]; // b
 const arr4 = ["b", "c"];
 const arr5 = ["b", "e", "c"];
-const arr6 = ["b", "b", "e"];
-const arr7 = ["b", "c", "e"];
-const arr8 = ["b", "e", "c"];
+
+const arr6 = ["b", "b", "e"]; // b, e
+const arr7 = ["b", "c", "e", "b"];
+const arr8 = ["b", "e", "c", "b"];
 
 const inter = (arr1, arr2) => {
   const res = arr1.filter((item) => {
-    return arr2.some((el) => el === item);
+    const len = arr2.length;
+    const index = arr2.indexOf(item);
+    if (index !== -1) {
+      arr2.splice(index, 1);
+    }
+    return len > arr2.length;
   });
+  console.log("common => ", res);
   return [...new Set(res)];
 };
 
@@ -30,7 +38,6 @@ const intersection = (...arrays) => {
   return res;
 };
 
-intersection(arr1, arr2);
-intersection(arr3, arr4, arr5);
-intersection(arr6, arr7, arr8);
-intersection(arr3, arr4, arr5, arr6, arr7, arr8);
+intersection(arr1, arr2); //        [2, 3]; 1, 2]; => ["2"]
+intersection(arr3, arr4, arr5); //  ["a", "b"] ,["b", "c"], ["b", "e", "c"] => ["b"]
+intersection(arr6, arr7, arr8); //  ["b", "b", "e"]; ["b", "c", "e", "b"]; ["b", "e", "b", "c"]; => ["b", "e"]
